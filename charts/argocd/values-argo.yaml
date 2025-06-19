@@ -1,0 +1,31 @@
+redis-ha:
+  enabled: false
+
+controller:
+  replicas: 1
+
+server:
+  replicas: 1
+
+repoServer:
+  replicas: 1
+
+applicationSet:
+  replicas: 1
+
+global:
+  domain: testargocd.jhu.edu
+
+certificate:
+  enabled: true
+
+server:
+  ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      kubernetes.io/ingress.class: nginx-stage
+      meta.helm.sh/release-namespace: cws-stage
+    enabled: true
+    ingressClassName: nginx-stage
+    annotations:
+    tls: true

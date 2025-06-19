@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: python-app
+  namespace: cws-stage
+  annotations:
+    kubernetes.io/ingress.class: nginx-stage
+    #meta.helm.sh/release-name: python-app.jhu.edu
+    #meta.helm.sh/release-namespace: cws-stage
+spec:
+  rules:
+    - host: "python-app.jhu.edu"
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: python-app
+              port:
+                number: 8080
