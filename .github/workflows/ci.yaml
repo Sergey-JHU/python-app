@@ -31,7 +31,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: "cwsacr.azurecr.io/cws/sergey/python-app:v4"
-          #tags: ${{ secrets.IMAGE_TAG }}
-          #tags: ${GITHUB_SHA::6}
+          tags: ${{ secrets.IMAGE_TAG }}
           file: Dockerfile
