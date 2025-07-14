@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  build:
+  ci:
     name: 'Build and Push to ACR'
     runs-on: ubuntu-latest
     #runs-on: self-hosted
@@ -34,3 +34,18 @@ jobs:
           push: true
           tags: ${{ secrets.IMAGE_TAG }}
           file: Dockerfile
+
+  cd:
+    needs: ci
+    runs-on: self-hosted
+    steps:
+      - name: Argocd app sync
+        shell: bash
+        run: |
+          argocd login argocd-server.argocd \
+          --insecure \
+          --grpc-web \
+          --username admin \
+          --password ${{ secrets.ARGOCD_PASSWORD }}
+
+          argocd app sync python-app
