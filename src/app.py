@@ -5,13 +5,14 @@ import socket
 
 app = Flask(__name__)
 
-@app.route('/api/v1/details')
+@app.route('/api/v1/info')
 
-def details():
+def info():
     #return '<h1>Hello World</h1>'
     return jsonify({'time': datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y"),
                     'hostname': socket.gethostname(),
                     'message': 'Hi CWS Team! You are doing great!!!'
+                    'deployed_on': 'kubernetes'
                   })
 
 @app.route('/api/v1/health')
