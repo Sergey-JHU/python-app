@@ -65,7 +65,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx-stage
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: python-app.jhu.edu
+    - host: python-app1.jhu.edu
       paths:
         - path: /
           pathType: Prefix
@@ -102,7 +102,7 @@ autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
-  targetCPUUtilizationPercentage: 70
+  targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
