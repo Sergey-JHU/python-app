@@ -5,6 +5,7 @@ metadata:
   description: Python app yhat displays the time.
   annotations:
     github.com/project-slug: Sergey-JHU/python-app
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: service
   owner: development
